@@ -1,14 +1,50 @@
+.main-wrapper {
+  height: 48.78rem;
+}
+
+.dashboard .container {
+  height: 48.78rem;
+}
+
+.dashboard .container h1 {
+  margin-bottom: 7rem;
+}
+
 .navbar {
   background-color: rgba(0, 0, 0, 0.308);
   z-index: 9;
+}
+
+footer {
+  position: relative;
+  top: -127px;
+  background-color: rgba(0, 0, 0, 0.308);
+  z-index: 9;
+  color: rgba(209, 209, 209, 0.616);
+}
+
+.login .container {
+  height: 48.78rem;
+}
+
+.register .container {
+  height: 48.78rem;
 }
 
 .landing {
   background-color: rgba(105, 105, 105, 0.671);
   position: relative;
   height: 100%;
-  margin-bottom: -50px;
   top: -55.4px;
+}
+
+.main-search {
+  margin: auto;
+  padding-top: 2rem;
+}
+
+.main-search .btn {
+  width: 10rem;
 }
 
 img {
@@ -27,20 +63,22 @@ img {
 .banner1 {
   background: url('./images/happy2.jpg') no-repeat;
   background-size: cover;
-  height: 45rem;
+  height: 48.78rem;
   color: rgb(0, 0, 0);
 }
 
 .banner1 h1 {
   font-family: 'Roboto Condensed', sans-serif;
-  text-align: center;
-  width: 80%;
   padding-top: 5rem;
+  width: 100%;
 }
 
 .banner1 p {
-  text-align: center;
-  width: 80%;
+  width: 100%;
+}
+
+.banner1 form {
+  width: 100%;
 }
 
 /* Banner 2 */

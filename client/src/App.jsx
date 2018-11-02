@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="main-wrapper">
           <NavBar />
           <Route exact path="/" component={Landing} />
           <div className="container">
@@ -74,17 +74,17 @@ const mapDispatchToProps = dispatch =>
     {
       fetchStories: actions.fetchStories,
     },
-    dispatch,
+    dispatch
   );
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App);
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );

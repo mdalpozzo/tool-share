@@ -30,11 +30,11 @@ class Login extends Component {
     }
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
 
     const userData = {
@@ -54,7 +54,7 @@ class Login extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">Sign in to your MNA account</p>
+              <p className="lead text-center">Sign in to your Tool Share account</p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Email Address"
@@ -97,5 +97,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser },
+  { loginUser }
 )(Login);

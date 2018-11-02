@@ -48,7 +48,7 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand-sm justify-content-between">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            MNA Web Services
+            ToolShare
           </Link>
           {/* <button
             className="navbar-toggler"
@@ -58,6 +58,7 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button> */}
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     );

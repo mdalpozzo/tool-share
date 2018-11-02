@@ -1,8 +1,8 @@
 {
-  "name": "community-news",
+  "name": "tool-share",
   "version": "1.0.0",
   "main": "app.jsx",
-  "repository": "https://github.com/mdalpozzo/community-news.git",
+  "repository": "https://github.com/mdalpozzo/tool-share.git",
   "author": "Marlin Dalpozzo",
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "build": "webpack",
     "build-dev": "webpack --watch",
     "seed": "node database/seed.js",
-    "client-install": "cd client && yarn install",
+    "client-install": "cd client yarn install",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run build-dev\" \"npm run start-dev\"",
     "heroku-postbuild": "cd client yarn install && yarn install && npm run build"
@@ -38,6 +38,7 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "file-loader": "^2.0.0",
     "gravatar": "^1.6.0",
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.3.0",
