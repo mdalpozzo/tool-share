@@ -3,10 +3,14 @@
 }
 
 .create-profile .container {
+  background: url('./images/tools1.jpg') no-repeat;
+  background-size: cover;
   height: 50rem;
 }
 
 .dashboard .container {
+  background: url('./images/tools1.jpg') no-repeat;
+  background-size: cover;
   height: 48.78rem;
 }
 
@@ -28,10 +32,16 @@ footer {
 }
 
 .login .container {
+  background: url('./images/tools1.jpg') no-repeat;
+  background-size: cover;
   height: 48.78rem;
+}
+.login-inner {
 }
 
 .register .container {
+  background: url('./images/tools1.jpg') no-repeat;
+  background-size: cover;
   height: 48.78rem;
 }
 
@@ -65,7 +75,7 @@ img {
 
 /* Banner 1 */
 .banner1 {
-  background: url('./images/happy2.jpg') no-repeat;
+  background: url('./images/tools1.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
   color: rgb(0, 0, 0);
