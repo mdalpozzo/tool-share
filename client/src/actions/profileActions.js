@@ -21,8 +21,46 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
+// Get all lenders
+export const getAllLenders = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/all`)
+    .then(res =>
+      dispatch({
+        type: types.GET_LENDERS,
+        payload: res.data,
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: types.GET_LENDERS,
+        payload: {},
+      })
+    );
+};
+
+// Get profile by tool
+export const getProfileTool = (tool, location) => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/tool/${tool}`)
+    .then(res =>
+      dispatch({
+        type: types.GET_LENDERS,
+        payload: res.data,
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: types.GET_LENDERS,
+        payload: {},
+      })
+    );
+};
+
 // Create profile
-export const registerUser = (profileData, history) => dispatch => {
+export const createProfile = (profileData, history) => dispatch => {
   axios
     .post('/api/profile', profileData)
     .then(res => history.push('/dashboard'))
@@ -34,6 +72,7 @@ export const registerUser = (profileData, history) => dispatch => {
     );
 };
 
+// Profile loading
 export const setProfileLoading = () => ({
   type: types.PROFILE_LOADING,
 });

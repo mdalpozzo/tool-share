@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions/actions';
 // import ControlledCarousel from './banners/ControlledCarousel.jsx';
 import TextFieldGroup from './common/TextFieldGroup.jsx';
+import { getProfileTool, getAllLenders } from '../actions/profileActions';
 
 class Landing extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class Landing extends Component {
     this.state = {
       query: '',
       location: '',
+      results: '',
       errors: {},
     };
   }
@@ -34,16 +36,29 @@ class Landing extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const userData = {
-      query: this.state.query,
-      location: this.state.location,
-    };
+    this.props.getProfileTool(this.state.query, this.state.location);
+  };
+
+  seeAll = () => {
+    this.props.getAllLenders();
   };
 
   render() {
-    // if (this.props.stories.filterBy.topStories.items.length === 0) return null;
     const { errors } = this.state;
 
+    // if (this.state.lenders) {
+    //   return (
+    //     <div className="landing">
+    //       <div className="container-fluid">
+    //         <div className="row">
+    //           <div className="container-fluid">
+    //             <h1>HELLO</h1>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   );
+    // } else {
     return (
       <div className="landing">
         <div className="container-fluid">
@@ -71,20 +86,33 @@ class Landing extends Component {
                   />
                   <input type="submit" value="Search" className="btn btn-info" />
                 </form>
+                <Link to="/lenders" className="btn btn-lg btn-info">
+                  See All Lenders
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
     );
+    // }
   }
 }
 
 Landing.propTypes = {
+  getProfileTool: PropTypes.func.isRequired,
+  getAllLenders: PropTypes.func.isRequired,
   // errors: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getProfileTool,
+      getAllLenders,
+    },
+    dispatch
+  );
 
 const mapStateToProps = state => ({});
 

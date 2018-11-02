@@ -4,9 +4,10 @@ const initialState = {
   profile: null,
   profiles: null,
   loading: false,
+  lenders: null,
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case types.PROFILE_LOADING:
       return {
@@ -17,6 +18,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: action.payload,
+        loading: false,
+      };
+    case types.GET_LENDERS:
+      return {
+        ...state,
+        lenders: action.payload,
         loading: false,
       };
     default:

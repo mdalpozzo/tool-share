@@ -27,7 +27,7 @@ class Dashboard extends Component {
       } else {
         // User is logged in but has no profile
         dashboardContent = (
-          <div>
+          <div className="text-center">
             <p className="lead text=muted">Welcome {user.name}</p>
             <p>You have not yet setup a profile, please add some info</p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
@@ -40,11 +40,13 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
-              {dashboardContent}
+            <div className="container-fluid">
+              <div className="col-md-12">
+                <h1 className="display-4">Dashboard</h1>
+                {dashboardContent}
+              </div>
             </div>
           </div>
         </div>

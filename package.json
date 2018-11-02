@@ -9,7 +9,7 @@
     "start": "node server.js",
     "start-dev": "nodemon server.js",
     "build": "cd client && webpack",
-    "build-dev": "webpack --watch",
+    "build-dev": "cd client && webpack --watch",
     "seed": "node database/seed.js",
     "client-install": "cd client && yarn install",
     "client": "cd client && npm start",

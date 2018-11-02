@@ -2,19 +2,29 @@
   height: 48.78rem;
 }
 
-.create-profile .container {
-  background: url('./images/tools1.jpg') no-repeat;
+.create-profile .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
-  height: 50rem;
+  color: rgb(255, 255, 255);
 }
 
-.dashboard .container {
-  background: url('./images/tools1.jpg') no-repeat;
+.create-profile .container-fluid .row {
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.create-profile h1,
+.create-profile p {
+  margin: auto;
+}
+
+.dashboard .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
+  color: rgb(255, 255, 255);
 }
 
-.dashboard .container h1 {
+.dashboard .container-fluid h1 {
   margin-bottom: 7rem;
 }
 
@@ -25,22 +35,22 @@
 
 footer {
   position: relative;
-  top: -127px;
   background-color: rgba(0, 0, 0, 0.308);
   z-index: 9;
   color: rgba(209, 209, 209, 0.616);
 }
 
 .login .container {
-  background: url('./images/tools1.jpg') no-repeat;
+  background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
+  color: rgb(255, 255, 255);
 }
 .login-inner {
 }
 
 .register .container {
-  background: url('./images/tools1.jpg') no-repeat;
+  background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
 }
@@ -74,11 +84,15 @@ img {
 }
 
 /* Banner 1 */
-.banner1 {
-  background: url('./images/tools1.jpg') no-repeat;
+.landing .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.landing .container-fluid .row {
+  background-color: rgba(0, 0, 0, 0.425);
 }
 
 .banner1 h1 {

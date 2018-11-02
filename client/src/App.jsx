@@ -24,6 +24,7 @@ import Register from './comps/auth/Register.jsx';
 import Login from './comps/auth/Login.jsx';
 import Dashboard from './comps/Dashboard.jsx';
 import CreateProfile from './comps/create-profile/CreateProfile.jsx';
+import Lenders from './comps/lenders/Lenders.jsx';
 
 import * as actions from './actions/actions';
 import store from './store/store';
@@ -58,9 +59,10 @@ class App extends React.Component {
         <div className="main-wrapper">
           <NavBar />
           <Route exact path="/" component={Landing} />
-          <div className="container">
+          <div className="container-fluid p-0">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/lenders" component={Lenders} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
