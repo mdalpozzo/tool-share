@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+//love
 const InputGroup = ({ name, placeholder, value, error, icon, type, onChange }) => (
   <div className="input=group mb-3">
     <div className="input-group-prepend">
