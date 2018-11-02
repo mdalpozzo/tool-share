@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import jwt_decode from 'jwt-decode';
@@ -10,6 +11,8 @@ import axios from 'axios';
 
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
+
+import PrivateRoute from './comps/common/PrivateRoute.jsx';
 
 import NavBar from './comps/NavBar.jsx';
 import Stories from './comps/Stories.jsx';
@@ -20,6 +23,7 @@ import Landing from './comps/Landing.jsx';
 import Register from './comps/auth/Register.jsx';
 import Login from './comps/auth/Login.jsx';
 import Dashboard from './comps/Dashboard.jsx';
+import CreateProfile from './comps/create-profile/CreateProfile.jsx';
 
 import * as actions from './actions/actions';
 import store from './store/store';
@@ -57,8 +61,12 @@ class App extends React.Component {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/stories" component={Stories} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+            </Switch>
           </div>
           <Footer />
         </div>
