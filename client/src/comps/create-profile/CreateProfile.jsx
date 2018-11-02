@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup.jsx';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup.jsx';
-import InputGroup from '../common/InputGroup.jsx';
+import InputGroup from '../common/InputGroup2.jsx';
 import SelectListGroup from '../common/SelectListGroup.jsx';
 
 import { createProfile } from '../../actions/profileActions';
