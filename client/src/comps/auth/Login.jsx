@@ -53,7 +53,7 @@ class Login extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="container-fluid login-inner">
-              <div className="col-md-8 m-auto">
+              <div className="col-lg-6 main-input">
                 <h1 className="display-4 text-center">Log In</h1>
                 <p className="lead text-center">Sign in to your Tool Share account</p>
                 <form onSubmit={this.onSubmit}>

@@ -1,7 +1,90 @@
-.main-wrapper {
-  height: 48.78rem;
+/* LANDING PAGE */
+.landing {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
 }
 
+.landing .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.landing .container-fluid .row {
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.landing-inner h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-top: 5rem;
+  width: 100%;
+}
+
+.landing-inner p {
+  width: 100%;
+}
+
+.landing-inner form {
+  width: 100%;
+}
+
+.main-search {
+  margin: auto;
+  padding-top: 2rem;
+}
+
+.main-search .btn {
+  width: 10rem;
+}
+/* ======================= */
+
+/* SIGNUP PAGE */
+.register {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.register .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.main-input {
+  margin: auto;
+  padding-top: 3rem;
+}
+
+.register .btn {
+  width: 10rem;
+}
+/* ======================= */
+
+/* LOGIN PAGE */
+.login {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.login .container-fluid {
+  background: url('./images/tools2.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+.login-inner {
+}
+/* ======================= */
+
+/* CREATE PROFILE PAGE */
 .create-profile .container-fluid {
   background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
@@ -16,7 +99,9 @@
 .create-profile p {
   margin: auto;
 }
+/* ======================= */
 
+/* DASHBOARD PAGE */
 .dashboard .container-fluid {
   background: url('./images/tools2.jpg') no-repeat;
   background-size: cover;
@@ -27,49 +112,27 @@
 .dashboard .container-fluid h1 {
   margin-bottom: 7rem;
 }
+/* ======================= */
 
+.main-wrapper {
+  height: 48.78rem;
+}
+
+/* ======================= */
 .navbar {
   background-color: rgba(0, 0, 0, 0.308);
   z-index: 9;
 }
+/* ======================= */
 
+/* ======================= */
 footer {
   position: relative;
   background-color: rgba(0, 0, 0, 0.308);
   z-index: 9;
   color: rgba(209, 209, 209, 0.616);
 }
-
-.login .container {
-  background: url('./images/tools2.jpg') no-repeat;
-  background-size: cover;
-  height: 48.78rem;
-  color: rgb(255, 255, 255);
-}
-.login-inner {
-}
-
-.register .container {
-  background: url('./images/tools2.jpg') no-repeat;
-  background-size: cover;
-  height: 48.78rem;
-}
-
-.landing {
-  background-color: rgba(105, 105, 105, 0.671);
-  position: relative;
-  height: 100%;
-  top: -55.4px;
-}
-
-.main-search {
-  margin: auto;
-  padding-top: 2rem;
-}
-
-.main-search .btn {
-  width: 10rem;
-}
+/* ======================= */
 
 img {
   width: 100%;
@@ -81,74 +144,6 @@ img {
 
 #carouselExampleControls {
   width: 100%;
-}
-
-/* Banner 1 */
-.landing .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
-  background-size: cover;
-  height: 48.78rem;
-  color: rgb(255, 255, 255);
-}
-
-.landing .container-fluid .row {
-  background-color: rgba(0, 0, 0, 0.425);
-}
-
-.banner1 h1 {
-  font-family: 'Roboto Condensed', sans-serif;
-  padding-top: 5rem;
-  width: 100%;
-}
-
-.banner1 p {
-  width: 100%;
-}
-
-.banner1 form {
-  width: 100%;
-}
-
-/* Banner 2 */
-.banner2 {
-  background: url('./images/clouds.jpg') no-repeat;
-  background-size: cover;
-  height: 45rem;
-}
-
-.banner2-content {
-  position: absolute;
-  bottom: 2rem;
-  left: 3rem;
-}
-
-.banner2 h1 {
-  font-family: 'Roboto Condensed', sans-serif;
-  text-align: left;
-}
-
-.banner2 p {
-  text-align: left;
-}
-
-/* Banner 3 */
-.banner3 {
-  background: url('./images/simple.jpg') no-repeat;
-  background-size: cover;
-  height: 45rem;
-  color: rgb(0, 0, 0);
-  padding-top: 3rem;
-}
-
-.banner3 h1 {
-  /* font-family: 'Roboto Condensed', sans-serif; */
-  width: 70%;
-  padding-left: 2rem;
-}
-
-.banner3 p {
-  width: 70%;
-  padding-left: 2rem;
 }
 
 .dark-overlay {

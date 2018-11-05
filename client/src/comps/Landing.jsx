@@ -68,7 +68,7 @@ class Landing extends Component {
       <div className="landing">
         <div className="container-fluid">
           <div className="row">
-            <div className="container-fluid banner1">
+            <div className="container-fluid landing-inner">
               <div className="col-lg-6 main-search">
                 <h1 className="display-3 text-center">Tool Share</h1>
                 <p className="lead text-center">You need it, your neighbor's got it</p>
