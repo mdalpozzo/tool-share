@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions/actions';
 // import ControlledCarousel from './banners/ControlledCarousel.jsx';
 import TextFieldGroup from './common/TextFieldGroup.jsx';
-import { getProfileTool, getAllLenders } from '../actions/profileActions';
+import { getProfileByTool, getAllLenders } from '../actions/profileActions';
 
 class Landing extends Component {
   constructor() {
@@ -21,13 +21,15 @@ class Landing extends Component {
 
   componentWillMount() {}
 
-  componentDidMount() {
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push('/dashboard');
-    // }
-  }
+  componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {}
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.profile);
+    // maybe instead if areSearchResultsStale false then show results page/lenders results
+    if (nextProps.profile.searchStarted) {
+      this.props.history.push('/lenders');
+    }
+  }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,8 +37,11 @@ class Landing extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
-    this.props.getProfileTool(this.state.query, this.state.location);
+    if (this.state.query === '') {
+      this.props.getAllLenders();
+    } else {
+      this.props.getProfileByTool(this.state.query, this.state.location);
+    }
   };
 
   seeAll = () => {
@@ -67,6 +72,7 @@ class Landing extends Component {
               <div className="col-lg-6 main-search">
                 <h1 className="display-3 text-center">Tool Share</h1>
                 <p className="lead text-center">You need it, your neighbor's got it</p>
+                {/* pull this out into a search component.  create a search page with lenders comonent and search comp */}
                 <form className="text-center" onSubmit={this.onSubmit}>
                   <TextFieldGroup
                     placeholder="What do you need?"
@@ -86,9 +92,12 @@ class Landing extends Component {
                   />
                   <input type="submit" value="Search" className="btn btn-info" />
                 </form>
-                <Link to="/lenders" className="btn btn-lg btn-info">
-                  See All Lenders
-                </Link>
+                <input
+                  value="See All Lenders"
+                  type="button"
+                  onClick={this.seeAll}
+                  className="btn btn-info"
+                />
               </div>
             </div>
           </div>
@@ -100,7 +109,7 @@ class Landing extends Component {
 }
 
 Landing.propTypes = {
-  getProfileTool: PropTypes.func.isRequired,
+  getProfileByTool: PropTypes.func.isRequired,
   getAllLenders: PropTypes.func.isRequired,
   // errors: PropTypes.object.isRequired,
 };
@@ -108,13 +117,15 @@ Landing.propTypes = {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getProfileTool,
+      getProfileByTool,
       getAllLenders,
     },
     dispatch
   );
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  profile: state.profile,
+});
 
 export default connect(
   mapStateToProps,

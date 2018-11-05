@@ -25,3 +25,5 @@ export const CREATE_STORY_SHOW = 'CREATE_STORY_SHOW';
 export const CREATE_STORY_HIDE = 'CREATE_STORY_HIDE';
 
 export const GET_LENDERS = 'GET_LENDERS';
+
+export const SEARCH_FALSE = 'SEARCH_FALSE';

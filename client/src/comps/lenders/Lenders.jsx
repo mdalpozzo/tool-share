@@ -3,22 +3,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner.jsx';
-import { getProfileTool, getAllLenders } from '../../actions/profileActions';
+import { getProfileByTool, getAllLenders, searchStartedFalse } from '../../actions/profileActions';
 import LenderItem from './LenderItem.jsx';
 
 class Lenders extends Component {
   componentDidMount() {
-    this.props.getAllLenders();
+    this.props.searchStartedFalse();
   }
 
   render() {
-    console.log(this.props);
-    const { lenders, loading } = this.props.lenders;
     let lenderItems;
 
-    if (lenders === null || loading) {
+    if (this.props.lenders === null || this.props.loading) {
       lenderItems = <Spinner />;
     } else {
+      const { lenders } = this.props;
       if (lenders.length > 0) {
         lenderItems = lenders.map(lender => <LenderItem key={lender._id} lender={lender} />);
       } else {
@@ -42,20 +41,22 @@ class Lenders extends Component {
 }
 
 Lenders.propTypes = {
-  getProfileTool: PropTypes.func.isRequired,
+  getProfileByTool: PropTypes.func.isRequired,
   getAllLenders: PropTypes.func.isRequired,
+  searchStartedFalse: PropTypes.func.isRequired,
   lenders: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
-  lenders: state.profile,
+  lenders: state.profile.lenders,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getProfileTool,
+      getProfileByTool,
       getAllLenders,
+      searchStartedFalse,
     },
     dispatch
   );

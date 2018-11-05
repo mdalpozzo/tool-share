@@ -43,12 +43,12 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 router.get('/all', (req, res) => {
   const errors = {};
 
-  Profile.find()
+  Profile.find({ $or: [{ status: 'Both' }, { status: 'Lender' }] })
     .populate('user', ['name', 'avatar'])
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = 'There are no profiles';
-        return res.status(404).json();
+        return res.status(404).json(errors);
       }
 
       res.json(profiles);
@@ -61,15 +61,16 @@ router.get('/all', (req, res) => {
 // @access  Public
 router.get('/tool/:tool', (req, res) => {
   const errors = {};
+  const tool = req.params.tool;
 
-  Profile.find({ tool: req.params.tool })
+  Profile.find({ tools: req.params.tool })
     .populate('user', ['name', 'avatar'])
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = 'There is no user profiles that includes this tool';
         res.status(404).json(errors);
       }
-
+      console.log(profiles);
       res.json(profiles);
     })
     .catch(err => res.status(404).json(err));

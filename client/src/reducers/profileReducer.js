@@ -5,6 +5,7 @@ const initialState = {
   profiles: null,
   loading: false,
   lenders: null,
+  searchStarted: false,
 };
 
 export default function(state = initialState, action) {
@@ -25,6 +26,12 @@ export default function(state = initialState, action) {
         ...state,
         lenders: action.payload,
         loading: false,
+        searchStarted: true,
+      };
+    case types.SEARCH_FALSE:
+      return {
+        ...state,
+        searchStarted: false,
       };
     default:
       return state;

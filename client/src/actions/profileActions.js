@@ -41,7 +41,7 @@ export const getAllLenders = () => dispatch => {
 };
 
 // Get profile by tool
-export const getProfileTool = (tool, location) => dispatch => {
+export const getProfileByTool = (tool, location) => dispatch => {
   dispatch(setProfileLoading());
   axios
     .get(`/api/profile/tool/${tool}`)
@@ -57,6 +57,13 @@ export const getProfileTool = (tool, location) => dispatch => {
         payload: {},
       })
     );
+};
+
+// Set searchStarted to false
+export const searchStartedFalse = () => dispatch => {
+  dispatch({
+    type: types.SEARCH_FALSE,
+  });
 };
 
 // Create profile
