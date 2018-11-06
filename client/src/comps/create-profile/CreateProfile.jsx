@@ -107,11 +107,7 @@ class CreateProfile extends Component {
       toolInputs = tools.map(tool => {
         return (
           <div className="card" style={{ width: '18rem', display: 'inline-block' }}>
-            <img
-              className="card-img-top"
-              src=
-              alt="Card image cap"
-            />
+            <img className="card-img-top" src="" alt="Card image cap" />
             <div className="card-body">
               <p className="card-text">{tool.toolName}</p>
               <p className="card-text">{tool.description}</p>
