@@ -7,6 +7,7 @@ import TextFieldGroup from '../common/TextFieldGroup.jsx';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup.jsx';
 import InputGroup from '../common/InputGroup2.jsx';
 import SelectListGroup from '../common/SelectListGroup.jsx';
+import ImageUploader from '../common/ImageUploader.jsx';
 
 import { createProfile } from '../../actions/profileActions';
 
@@ -18,13 +19,18 @@ class CreateProfile extends Component {
       handle: '',
       location: '',
       status: '',
-      tools: '',
+      toolName: '',
+      toolDescription: '',
+      tools: [],
       bio: '',
       youtube: '',
       twitter: '',
       facebook: '',
       linkedin: '',
       instagram: '',
+      toolCount: 0,
+      selectedFile: null,
+      photoFD: null,
       errors: {},
     };
   }
@@ -39,21 +45,11 @@ class CreateProfile extends Component {
       tools: this.state.tools,
       bio: this.state.bio,
       social: {
-        youtube: {
-          type: this.state.youtube,
-        },
-        twitter: {
-          type: this.state.twitter,
-        },
-        facebook: {
-          type: this.state.facebook,
-        },
-        linkedin: {
-          type: this.state.linkin,
-        },
-        instagram: {
-          type: this.state.instagram,
-        },
+        youtube: this.state.youtube,
+        twitter: this.state.twitter,
+        facebook: this.state.facebook,
+        linkedin: this.state.linkin,
+        instagram: this.state.instagram,
       },
     };
 
@@ -64,10 +60,66 @@ class CreateProfile extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
-    const { errors, displaySocialInputs } = this.state;
+  onChangeImage = e => {
+    this.setState({
+      selectedFile: e.target.files[0],
+    });
+  };
 
-    let socialInputs;
+  addPhoto = () => {
+    const fd = new FormData();
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    console.log(fd);
+    this.setState({
+      photoFD: fd,
+    });
+  };
+
+  addTool = () => {
+    const fd = new FormData();
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    console.log(fd);
+
+    const tool = {
+      toolName: this.state.toolName,
+      description: this.state.toolDescription,
+      image: fd,
+    };
+    let tools = this.state.tools;
+    tools.push(tool);
+
+    this.setState({
+      tools,
+      toolName: '',
+      toolDescription: '',
+      selectedFile: null,
+      photoFD: null,
+      toolCount: this.state.toolCount + 1,
+    });
+  };
+
+  render() {
+    const { errors, displaySocialInputs, toolCount, tools } = this.state;
+
+    let socialInputs, toolInputs;
+
+    if (toolCount > 0) {
+      toolInputs = tools.map(tool => {
+        return (
+          <div className="card" style={{ width: '18rem', display: 'inline-block' }}>
+            <img
+              className="card-img-top"
+              src=
+              alt="Card image cap"
+            />
+            <div className="card-body">
+              <p className="card-text">{tool.toolName}</p>
+              <p className="card-text">{tool.description}</p>
+            </div>
+          </div>
+        );
+      });
+    }
 
     if (displaySocialInputs) {
       socialInputs = (
@@ -162,14 +214,27 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="Where are you located?"
                 />
+                {toolInputs}
                 <TextFieldGroup
                   placeholder="e.g. hammer, lawnmower, shovel..."
-                  name="tools"
-                  value={this.state.tools}
+                  name="toolName"
+                  value={this.state.toolName}
                   onChange={this.onChange}
                   error={errors.tools}
-                  info="Tools you have to share."
+                  info="Toolname."
                 />
+                <TextFieldGroup
+                  placeholder="12in hack saw... 21ft ladder..."
+                  name="toolDescription"
+                  value={this.state.toolDescription}
+                  onChange={this.onChange}
+                  error={errors.tools}
+                  info="Tool description."
+                />
+                <ImageUploader onChange={this.onChangeImage} />
+                <button type="button" onClick={this.addTool} className="btn btn-light">
+                  Add More Tools
+                </button>
                 <TextAreaFieldGroup
                   placeholder="a little bit about yourself here..."
                   name="bio"

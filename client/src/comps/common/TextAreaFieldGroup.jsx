@@ -13,7 +13,7 @@ const TextAreaFieldGroup = ({ name, placeholder, value, error, info, onChange })
       value={value}
       onChange={onChange}
     />
-    {info && <small className="form-text text-muted">{info}</small>}
+    {info && <small className="form-text">{info}</small>}
     {error && <div className="invalid-feedback">{error}</div>}
   </div>
 );

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const fs = require('fs');
 
 const router = express.Router();
 
@@ -132,11 +133,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
   if (req.body.status) profileFields.status = req.body.status;
-  // Skills - split into array
-  if (typeof req.body.tools !== 'undefined') {
-    profileFields.tools = req.body.tools.split(',');
+  if (typeof req.body.tools.length > 0) {
+    profileFields.tools = req.body.tools;
   }
-
   // Social
   profileFields.social = {};
   if (req.body.youtube) profileFields.social.youtube = req.body.youtube;

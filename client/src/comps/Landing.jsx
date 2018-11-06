@@ -51,19 +51,6 @@ class Landing extends Component {
   render() {
     const { errors } = this.state;
 
-    // if (this.state.lenders) {
-    //   return (
-    //     <div className="landing">
-    //       <div className="container-fluid">
-    //         <div className="row">
-    //           <div className="container-fluid">
-    //             <h1>HELLO</h1>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   );
-    // } else {
     return (
       <div className="landing">
         <div className="container-fluid">
@@ -104,7 +91,6 @@ class Landing extends Component {
         </div>
       </div>
     );
-    // }
   }
 }
 
