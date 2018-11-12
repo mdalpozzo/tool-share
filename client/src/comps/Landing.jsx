@@ -24,7 +24,6 @@ class Landing extends Component {
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.profile);
     // maybe instead if areSearchResultsStale false then show results page/lenders results
     if (nextProps.profile.searchStarted) {
       this.props.history.push('/lenders');
