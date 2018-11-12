@@ -11,7 +11,7 @@
 }
 
 .landing .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
+  background: url('./images/tools2small.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
   color: rgb(255, 255, 255);
@@ -54,7 +54,7 @@
 }
 
 .register .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
+  background: url('./images/tools2small.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
   color: rgb(255, 255, 255);
@@ -79,7 +79,7 @@
 }
 
 .login .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
+  background: url('./images/tools2small.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
   color: rgb(255, 255, 255);
@@ -90,7 +90,7 @@
 
 /* CREATE PROFILE PAGE */
 .create-profile .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
+  background: url('./images/tools2small.jpg') no-repeat;
   background-size: cover;
   color: rgb(255, 255, 255);
 }
@@ -107,7 +107,7 @@
 
 /* DASHBOARD PAGE */
 .dashboard .container-fluid {
-  background: url('./images/tools2.jpg') no-repeat;
+  background: url('./images/tools2small.jpg') no-repeat;
   background-size: cover;
   height: 48.78rem;
   color: rgb(255, 255, 255);
