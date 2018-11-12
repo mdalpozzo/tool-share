@@ -61,17 +61,17 @@ class App extends React.Component {
         <div className="main-wrapper">
           <NavBar />
           <Route exact path="/" component={Landing} />
-          <div className="container-fluid p-0">
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/lenders" component={Lenders} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
-            <Switch>
-              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
-            </Switch>
-          </div>
+
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/lenders" component={Lenders} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+          </Switch>
+
           <Footer />
         </div>
       </Router>

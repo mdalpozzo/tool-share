@@ -45,6 +45,60 @@
 }
 /* ======================= */
 
+/* LENDERS PAGE */
+.lenders {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.lenders .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.lenders .container-fluid .row {
+  /* background-color: rgba(0, 0, 0, 0.425); */
+}
+
+.lenders .card {
+  height: 5rem;
+  width: 30rem;
+  padding: 0;
+}
+
+.lender .card.row {
+  margin-top: 0;
+}
+
+.lenders .card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  width: 7rem;
+}
+
+.lenders .card .status {
+  font-size: 0.75rem;
+  margin: 0;
+  width: 4rem;
+}
+
+.lenders .card .location {
+  font-size: 0.75rem;
+  margin: 0;
+  width: 7rem;
+}
+
+.lenders .card img {
+  height: 4rem;
+  width: 4rem;
+}
+/* ======================= */
+
 /* SIGNUP PAGE */
 .register {
   background-color: rgba(105, 105, 105, 0.671);

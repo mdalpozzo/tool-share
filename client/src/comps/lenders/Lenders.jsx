@@ -26,7 +26,7 @@ class Lenders extends Component {
     }
     return (
       <div className="lenders">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4 text-center">Lender Profiles</h1>
