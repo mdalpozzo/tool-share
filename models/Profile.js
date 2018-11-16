@@ -20,22 +20,6 @@ const ProfileSchema = new Schema({
     type: String,
     required: true,
   },
-  tools: [
-    {
-      toolName: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-        required: true,
-      },
-      image: {
-        data: Buffer,
-        contentType: String,
-      },
-    },
-  ],
   bio: {
     type: String,
   },

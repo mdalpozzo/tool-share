@@ -133,9 +133,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
   if (req.body.status) profileFields.status = req.body.status;
-  if (typeof req.body.tools.length > 0) {
-    profileFields.tools = req.body.tools;
-  }
   // Social
   profileFields.social = {};
   if (req.body.youtube) profileFields.social.youtube = req.body.youtube;

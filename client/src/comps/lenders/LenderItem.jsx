@@ -6,7 +6,6 @@ import isEmpty from '../../validation/is-empty';
 class LenderItem extends Component {
   render() {
     const { lender } = this.props;
-    console.log(lender);
     return (
       <div className="card card-body bg-light mb-3">
         <div className="row">
@@ -19,10 +18,10 @@ class LenderItem extends Component {
                 <h3 className="align-text-bottom">{lender.user.name}</h3>
               </div>
               <div className="col">
-                <p className="align-text-bottom">{lender.status}</p>
+                <p className="align-text-bottom status">{lender.status}</p>
               </div>
               <div className="col">
-                <p className="align-text-bottom">{lender.location}</p>
+                <p className="align-text-bottom location">{lender.location}</p>
               </div>
               {/* <p>Tools for lending: {lender.tools}</p> */}
             </div>

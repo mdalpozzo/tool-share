@@ -7,7 +7,6 @@ import TextFieldGroup from '../common/TextFieldGroup.jsx';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup.jsx';
 import InputGroup from '../common/InputGroup2.jsx';
 import SelectListGroup from '../common/SelectListGroup.jsx';
-import ImageUploader from '../common/ImageUploader.jsx';
 
 import { createProfile } from '../../actions/profileActions';
 
@@ -19,18 +18,12 @@ class CreateProfile extends Component {
       handle: '',
       location: '',
       status: '',
-      toolName: '',
-      toolDescription: '',
-      tools: [],
       bio: '',
       youtube: '',
       twitter: '',
       facebook: '',
       linkedin: '',
       instagram: '',
-      toolCount: 0,
-      selectedFile: null,
-      photoFD: null,
       errors: {},
     };
   }
@@ -42,7 +35,6 @@ class CreateProfile extends Component {
       handle: this.state.handle,
       location: this.state.location,
       status: this.state.status,
-      tools: this.state.tools,
       bio: this.state.bio,
       social: {
         youtube: this.state.youtube,
@@ -66,56 +58,10 @@ class CreateProfile extends Component {
     });
   };
 
-  addPhoto = () => {
-    const fd = new FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-    console.log(fd);
-    this.setState({
-      photoFD: fd,
-    });
-  };
-
-  addTool = () => {
-    const fd = new FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-    console.log(fd);
-
-    const tool = {
-      toolName: this.state.toolName,
-      description: this.state.toolDescription,
-      image: fd,
-    };
-    let tools = this.state.tools;
-    tools.push(tool);
-
-    this.setState({
-      tools,
-      toolName: '',
-      toolDescription: '',
-      selectedFile: null,
-      photoFD: null,
-      toolCount: this.state.toolCount + 1,
-    });
-  };
-
   render() {
-    const { errors, displaySocialInputs, toolCount, tools } = this.state;
+    const { errors, displaySocialInputs } = this.state;
 
-    let socialInputs, toolInputs;
-
-    if (toolCount > 0) {
-      toolInputs = tools.map(tool => {
-        return (
-          <div className="card" style={{ width: '18rem', display: 'inline-block' }}>
-            <img className="card-img-top" src="" alt="Card image cap" />
-            <div className="card-body">
-              <p className="card-text">{tool.toolName}</p>
-              <p className="card-text">{tool.description}</p>
-            </div>
-          </div>
-        );
-      });
-    }
+    let socialInputs;
 
     if (displaySocialInputs) {
       socialInputs = (
@@ -210,27 +156,6 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="Where are you located?"
                 />
-                {toolInputs}
-                <TextFieldGroup
-                  placeholder="e.g. hammer, lawnmower, shovel..."
-                  name="toolName"
-                  value={this.state.toolName}
-                  onChange={this.onChange}
-                  error={errors.tools}
-                  info="Toolname."
-                />
-                <TextFieldGroup
-                  placeholder="12in hack saw... 21ft ladder..."
-                  name="toolDescription"
-                  value={this.state.toolDescription}
-                  onChange={this.onChange}
-                  error={errors.tools}
-                  info="Tool description."
-                />
-                <ImageUploader onChange={this.onChangeImage} />
-                <button type="button" onClick={this.addTool} className="btn btn-light">
-                  Add More Tools
-                </button>
                 <TextAreaFieldGroup
                   placeholder="a little bit about yourself here..."
                   name="bio"

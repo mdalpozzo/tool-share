@@ -20,10 +20,6 @@ module.exports = function validateProfileInput(data) {
     errors.status = 'Status field is required';
   }
 
-  if (Validator.isEmpty(data.tools)) {
-    errors.tools = 'Tools field is required';
-  }
-
   if (!isEmpty(data.youtube)) {
     if (!Validator.isURL(data.youtube)) {
       errors.youtube = 'Not a valid URL';

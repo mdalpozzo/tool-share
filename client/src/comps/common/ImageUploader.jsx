@@ -8,7 +8,6 @@ const ImageUploader = ({ onChange, onClick }) => (
       <div className="col">
         <button onClick={onClick}>Upload File</button>
       </div>
-      <div className="col">IMAGE</div>
     </div>
   </div>
 );

@@ -25,6 +25,7 @@ import Login from './comps/auth/Login.jsx';
 import Dashboard from './comps/Dashboard.jsx';
 import CreateProfile from './comps/create-profile/CreateProfile.jsx';
 import Lenders from './comps/lenders/Lenders.jsx';
+import AddTools from './comps/AddTools.jsx';
 
 import * as actions from './actions/actions';
 import store from './store/store';
@@ -70,6 +71,9 @@ class App extends React.Component {
           </Switch>
           <Switch>
             <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/add-tools" component={AddTools} />
           </Switch>
 
           <Footer />
