@@ -8,6 +8,10 @@
   margin-bottom: 10px;
 }
 
+.name {
+  color: #7e4fff;
+}
+
 /* LANDING PAGE */
 .landing {
   background-color: rgba(105, 105, 105, 0.671);

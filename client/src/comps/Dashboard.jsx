@@ -27,16 +27,14 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <h4>TODO: DISPLAY PROFILE</h4>
-            <Link to="/add-tools" className="btn btn-lg btn-info">
-              Add Tools
-            </Link>
           </div>
         );
       } else {
         // User has profile but no tools
         dashboardContent = (
           <div className="text-center">
-            <p className="lead text=muted">Welcome {user.name}</p>
+            <span className="lead text=muted">Welcome </span>
+            <span className="lead name">{user.name}</span>
             <p>You don't have any tools for lending yet...</p>
             <Link to="/add-tools" className="btn btn-lg btn-info">
               Add Tools
