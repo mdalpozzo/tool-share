@@ -41,14 +41,16 @@ export const getProfileByTool = tool => dispatch => {
 };
 
 // Saves tool info to mongo (name, description, price, value, condition), save images to aws s3
-export const saveTool = (tool, toolImages) => dispatch => {
-  // send tool info to server which will save to mongo
+export const saveTool = toolFD => dispatch => {
   axios
-    .post('/api/tools', tool)
+    .post('/api/tools', toolFD, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
     .then(res => {
-      // send images to s3 with tool_id
-      console.log(res.data);
-      console.log(toolImages);
+      // console.log(res.data);
+      // console.log(toolImages);
       //
       dispatch({
         type: types.SAVE_TOOL,

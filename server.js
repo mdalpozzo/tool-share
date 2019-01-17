@@ -12,8 +12,8 @@ const tools = require('./routes/api/tools.js');
 const app = express();
 
 // Body parser middlware
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // DB Config
 const dbURI = require('./config/keys.js').mongoURI;

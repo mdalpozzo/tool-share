@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 
 import TextFieldGroup from './common/TextFieldGroup.jsx';
+import SelectListGroup from './common/SelectListGroup.jsx';
 import TextAreaFieldGroup from './common/TextAreaFieldGroup.jsx';
 import ImageUploader from './common/ImageUploader.jsx';
 import { saveTool } from '../actions/toolActions';
@@ -18,6 +19,7 @@ class AddTools extends Component {
       tools: [],
       name: '',
       description: '',
+      condition: '',
       toolCount: 0,
       selectedFile: null,
       photos: [],
@@ -37,26 +39,26 @@ class AddTools extends Component {
     });
   };
 
-  addPhoto = () => {
-    if (this.state.photos.length >= 4) {
-    } else if (this.state.photos.length === 0) {
-      const photos = new FormData();
-      photos.append('img1', this.state.selectedFile, this.state.selectedFile.name);
-      this.setState({
-        photos: photos,
-      });
-    } else {
-      const imgNum = this.state.photos.length + 1;
-      const photos = this.state.photos.append(
-        `img${imgNum}`,
-        this.state.selectedFile,
-        this.state.selectedFile.name
-      );
-      this.setState({
-        photos: photos,
-      });
-    }
-  };
+  // addPhoto = () => {
+  //   if (this.state.photos.length >= 4) {
+  //   } else if (this.state.photos.length === 0) {
+  //     const photos = new FormData();
+  //     photos.append('img1', this.state.selectedFile, this.state.selectedFile.name);
+  //     this.setState({
+  //       photos: photos,
+  //     });
+  //   } else {
+  //     const imgNum = this.state.photos.length + 1;
+  //     const photos = this.state.photos.append(
+  //       `img${imgNum}`,
+  //       this.state.selectedFile,
+  //       this.state.selectedFile.name
+  //     );
+  //     this.setState({
+  //       photos: photos,
+  //     });
+  //   }
+  // };
 
   addTool = () => {
     const tool = {
@@ -64,7 +66,17 @@ class AddTools extends Component {
       description: this.state.description,
     };
 
-    this.props.saveTool(tool, this.state.photos);
+    const toolFD = new FormData();
+
+    toolFD.append('name', this.state.name);
+    toolFD.append('description', this.state.description);
+    toolFD.append('condition', this.state.condition);
+
+    for (let i = 0; i < this.state.photos.length; i++) {
+      toolFD.append(`img${i + 1}`, this.state.photos[i], this.state.photos[i].name);
+    }
+
+    this.props.saveTool(toolFD);
     // let tools = this.state.tools;
     // tools.push(tool);
 
@@ -81,7 +93,6 @@ class AddTools extends Component {
   onDrop = (acceptedFiles, rejectedFiles) => {
     const photoCount = this.state.photoCount + 1;
     const photos = [...this.state.photos, acceptedFiles[0]];
-
     const reader = new FileReader();
     reader.addEventListener(
       'load',
@@ -99,10 +110,8 @@ class AddTools extends Component {
 
   render() {
     console.log(this.state);
-    const { toolCount, tools } = this.state;
-    const { photosPreview } = this.state;
-
-    let toolInputs, toolImages;
+    const { toolCount, tools, photosPreview, photoCount } = this.state;
+    let toolInputs, toolImages, dropUploader;
 
     if (toolCount > 0) {
       toolInputs = tools.map(tool => {
@@ -119,13 +128,44 @@ class AddTools extends Component {
     }
 
     if (photosPreview.length > 0) {
-      toolImages = photosPreview.map(imgSrc => {
-        return (
-          <div className="toolImgUploadThumb">
-            <img src={imgSrc} />
-          </div>
-        );
-      });
+      toolImages = (
+        <div>
+          <p>Uploaded images...</p>
+          {photosPreview.map(imgSrc => {
+            return (
+              <div className="toolImgUploadThumb">
+                <img src={imgSrc} />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (photoCount < 6) {
+      const maxImageSize = 5000000;
+      const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
+      dropUploader = (
+        <Dropzone
+          onDrop={this.onDrop}
+          accept={acceptedFileTypes}
+          multiple={false}
+          maxSize={maxImageSize}
+        >
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <p className="dropzone">Drag files here or click</p>
+            </div>
+          )}
+        </Dropzone>
+      );
+    } else {
+      dropUploader = (
+        <div>
+          <p>Max 6 photos per tool!</p>
+        </div>
+      );
     }
 
     return (
@@ -141,7 +181,7 @@ class AddTools extends Component {
               <form className="text-center" onSubmit={this.onSubmit}>
                 {toolInputs}
                 <TextFieldGroup
-                  placeholder="e.g. hammer, lawnmower, shovel..."
+                  placeholder="hammer, lawnmower, shovel..."
                   name="name"
                   value={this.state.name}
                   onChange={this.onChange}
@@ -154,22 +194,19 @@ class AddTools extends Component {
                   onChange={this.onChange}
                   info="Tool description."
                 />
+                <TextAreaFieldGroup
+                  placeholder="Drill bits all in good condition.  6in scratch along the right side of drill..."
+                  name="condition"
+                  value={this.state.condition}
+                  onChange={this.onChange}
+                  info="Describe the condition of the item.  Any scratches or cosmetic damage as well as the functionality."
+                />
 
-                <div>
-                  <p>Uploaded images...</p>
-                  {toolImages}
-                </div>
+                <div>{toolImages}</div>
 
-                <Dropzone onDrop={this.onDrop} multiple={false} maxSize={8000000}>
-                  {({ getRootProps, getInputProps }) => (
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <p className="dropzone">Drag files here or click</p>
-                    </div>
-                  )}
-                </Dropzone>
+                {dropUploader}
 
-                <button type="button" onClick={this.addTool} className="btn btn-light">
+                <button type="button" onClick={this.addTool} className="btn btn-light mt-4">
                   Add More Tools
                 </button>
                 <input type="submit" value="Submit" className="btn btn-info btn-block mt-4" />

@@ -2,8 +2,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const fs = require('fs');
+const multer = require('multer');
 
 const router = express.Router();
+
+// Set Storage Engine
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+// Init upload
+const upload = multer({
+  storage: storage,
+}).any();
 
 // Load Validation
 
@@ -57,11 +71,20 @@ router.get('/:tool', (req, res) => {
 // @desc
 // @access  Private
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const toolFields = {};
-  toolFields.user = req.user.id;
-  if (req.body.name) toolFields.name = req.body.name;
-  if (req.body.description) toolFields.description = req.body.description;
-  new Tool(toolFields).save().then(tool => res.json(tool));
+  upload(req, res, err => {
+    if (err) {
+      // handle errors
+    } else {
+      console.log(req.body);
+      console.log(req.files);
+      res.send('test');
+    }
+  });
+  // const toolFields = {};
+  // toolFields.user = req.user.id;
+  // if (req.body.name) toolFields.name = req.body.name;
+  // if (req.body.description) toolFields.description = req.body.description;
+  // new Tool(toolFields).save().then(tool => res.json(tool));
 });
 
 module.exports = router;
