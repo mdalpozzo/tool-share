@@ -15,9 +15,6 @@ import { setCurrentUser, logoutUser } from './actions/authActions';
 import PrivateRoute from './comps/common/PrivateRoute.jsx';
 
 import NavBar from './comps/NavBar.jsx';
-import Stories from './comps/Stories.jsx';
-import ToolBar from './comps/ToolBar.jsx';
-import TopStoriesBar from './comps/TopStoriesBar.jsx';
 import Footer from './comps/Footer.jsx';
 import Landing from './comps/Landing.jsx';
 import Register from './comps/auth/Register.jsx';

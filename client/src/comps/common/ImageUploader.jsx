@@ -6,7 +6,9 @@ const ImageUploader = ({ onChange, onClick }) => (
     <div className="row">
       <input type="file" onChange={onChange} />
       <div className="col">
-        <button onClick={onClick}>Upload File</button>
+        <button type="button" onClick={onClick}>
+          Add Photo
+        </button>
       </div>
     </div>
   </div>

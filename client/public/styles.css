@@ -2,6 +2,12 @@
   color: #000;
 }
 
+.dropzone {
+  height: 50px;
+  border: 1px dashed gray;
+  margin-bottom: 10px;
+}
+
 /* LANDING PAGE */
 .landing {
   background-color: rgba(105, 105, 105, 0.671);

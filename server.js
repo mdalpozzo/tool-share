@@ -7,8 +7,7 @@ const passport = require('passport');
 
 const users = require('./routes/api/users.js');
 const profile = require('./routes/api/profile.js');
-const posts = require('./routes/api/posts.js');
-const stories = require('./routes/api/stories.js');
+const tools = require('./routes/api/tools.js');
 
 const app = express();
 
@@ -36,8 +35,7 @@ require('./config/passport')(passport);
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
-app.use('/api/posts', posts);
-app.use('/api/stories', stories);
+app.use('/api/tools', tools);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -45,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('./client/public'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/public/index.html'), (err) => {
+    res.sendFile(path.join(__dirname, './client/public/index.html'), err => {
       if (err) {
         res.status(500).send(err);
       }
@@ -56,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, './client/public')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/public/index.html'), (err) => {
+    res.sendFile(path.join(__dirname, './client/public/index.html'), err => {
       if (err) {
         res.status(500).send(err);
       }
@@ -65,4 +63,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () =>
-  console.log(`Server's good to go on port ${port}... and may I say... you have got it going on today!`));
+  console.log(
+    `Server's good to go on port ${port}... and may I say... you have got it going on today!`
+  )
+);
