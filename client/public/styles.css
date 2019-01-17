@@ -12,6 +12,14 @@
   color: #7e4fff;
 }
 
+.toolImgUploadThumb {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px;
+}
+
 /* LANDING PAGE */
 .landing {
   background-color: rgba(105, 105, 105, 0.671);

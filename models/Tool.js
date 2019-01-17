@@ -18,24 +18,6 @@ const ToolSchema = new Schema({
     require: true,
     max: 100,
   },
-  images: {
-    0: {
-      data: Buffer,
-      type: String,
-    },
-    1: {
-      data: Buffer,
-      type: String,
-    },
-    2: {
-      data: Buffer,
-      type: String,
-    },
-    3: {
-      data: Buffer,
-      type: String,
-    },
-  },
 });
 
 const Tool = mongoose.model('tool', ToolSchema);

@@ -53,4 +53,15 @@ router.get('/:tool', (req, res) => {
     .catch(err => res.status(404).json(err));
 });
 
+// @route   POST api/tool
+// @desc
+// @access  Private
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const toolFields = {};
+  toolFields.user = req.user.id;
+  if (req.body.name) toolFields.name = req.body.name;
+  if (req.body.description) toolFields.description = req.body.description;
+  new Tool(toolFields).save().then(tool => res.json(tool));
+});
+
 module.exports = router;

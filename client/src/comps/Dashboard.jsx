@@ -27,6 +27,9 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <h4>TODO: DISPLAY PROFILE</h4>
+            <Link to="/add-tools" className="btn btn-lg btn-info">
+              Add Tools
+            </Link>
           </div>
         );
       } else {

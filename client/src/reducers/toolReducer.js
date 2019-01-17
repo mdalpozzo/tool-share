@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  tools: null,
+  tools: [],
 };
 
 export default function(state = initialState, action) {
@@ -11,7 +11,11 @@ export default function(state = initialState, action) {
         ...state,
         tools: action.payload,
       };
-
+    case types.SAVE_TOOL:
+      return {
+        ...state,
+        tools: [...state.tools, action.payload],
+      };
     default:
       return state;
   }

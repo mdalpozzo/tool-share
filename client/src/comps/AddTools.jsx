@@ -8,6 +8,7 @@ import Dropzone from 'react-dropzone';
 import TextFieldGroup from './common/TextFieldGroup.jsx';
 import TextAreaFieldGroup from './common/TextAreaFieldGroup.jsx';
 import ImageUploader from './common/ImageUploader.jsx';
+import { saveTool } from '../actions/toolActions';
 // import fs from require('fs');
 
 class AddTools extends Component {
@@ -20,6 +21,8 @@ class AddTools extends Component {
       toolCount: 0,
       selectedFile: null,
       photos: [],
+      photosPreview: [],
+      photoCount: 0,
       errors: {},
     };
   }
@@ -59,28 +62,47 @@ class AddTools extends Component {
     const tool = {
       name: this.state.name,
       description: this.state.description,
-      image: this.state.photos,
     };
+
+    this.props.saveTool(tool, this.state.photos);
     // let tools = this.state.tools;
     // tools.push(tool);
 
     // this.setState({
     //   tools,
     //   name: '',
-    //   description: '',
+    //   description: '',j
     //   selectedFile: null,
     //   photos: null,
     //   toolCount: this.state.toolCount + 1,
     // });
   };
 
-  onDrop = (acceptedFiles, rejectedFiles) => {};
+  onDrop = (acceptedFiles, rejectedFiles) => {
+    const photoCount = this.state.photoCount + 1;
+    const photos = [...this.state.photos, acceptedFiles[0]];
+
+    const reader = new FileReader();
+    reader.addEventListener(
+      'load',
+      () => {
+        this.setState({
+          photosPreview: [...this.state.photosPreview, reader.result],
+          photos,
+          photoCount,
+        });
+      },
+      false
+    );
+    reader.readAsDataURL(acceptedFiles[0]);
+  };
 
   render() {
     console.log(this.state);
     const { toolCount, tools } = this.state;
+    const { photosPreview } = this.state;
 
-    let toolInputs;
+    let toolInputs, toolImages;
 
     if (toolCount > 0) {
       toolInputs = tools.map(tool => {
@@ -91,6 +113,16 @@ class AddTools extends Component {
               <p className="card-text">{tool.name}</p>
               <p className="card-text">{tool.description}</p>
             </div>
+          </div>
+        );
+      });
+    }
+
+    if (photosPreview.length > 0) {
+      toolImages = photosPreview.map(imgSrc => {
+        return (
+          <div className="toolImgUploadThumb">
+            <img src={imgSrc} />
           </div>
         );
       });
@@ -123,7 +155,12 @@ class AddTools extends Component {
                   info="Tool description."
                 />
 
-                <Dropzone onDrop={this.onDrop} multiple maxSize={8000000}>
+                <div>
+                  <p>Uploaded images...</p>
+                  {toolImages}
+                </div>
+
+                <Dropzone onDrop={this.onDrop} multiple={false} maxSize={8000000}>
                   {({ getRootProps, getInputProps }) => (
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
@@ -151,7 +188,7 @@ AddTools.propTypes = {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ saveTool }, dispatch);
 
 export default connect(
   mapStateToProps,
