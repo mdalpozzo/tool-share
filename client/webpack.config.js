@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: DIST_DIR,
     // publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -18,23 +18,22 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {},
-          },
-        ],
+            options: {}
+          }
+        ]
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'env', 'stage-0'],
-          plugins: ['transform-class-properties'],
-        },
+        use: ['babel-loader']
       },
       {
         test: /\.(s*)css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  }
 };
