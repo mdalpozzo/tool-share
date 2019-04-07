@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const formData = require('express-form-data');
 
 const users = require('./routes/api/users.js');
 const profile = require('./routes/api/profile.js');
@@ -14,6 +15,7 @@ const app = express();
 // Body parser middlware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(formData.parse());
 
 // DB Config
 const dbURI = require('./config/keys.js').mongoURI;

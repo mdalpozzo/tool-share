@@ -1,0 +1,249 @@
+.card {
+  color: #000;
+}
+
+.dropzone {
+  height: 50px;
+  border: 1px dashed gray;
+  margin-bottom: 10px;
+}
+
+.name {
+  color: #7e4fff;
+}
+
+.tool-preview {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px;
+}
+
+/* LANDING PAGE */
+.landing {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.landing .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.landing .container-fluid .row {
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.landing-inner h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-top: 5rem;
+  width: 100%;
+}
+
+.landing-inner p {
+  width: 100%;
+}
+
+.landing-inner form {
+  width: 100%;
+}
+
+.main-search {
+  margin: auto;
+  padding-top: 2rem;
+}
+
+.main-search .btn {
+  width: 10rem;
+}
+/* ======================= */
+
+/* LENDERS PAGE */
+.lenders {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.lenders .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.lenders .container-fluid .row {
+  /* background-color: rgba(0, 0, 0, 0.425); */
+}
+
+.lenders .card {
+  height: 5rem;
+  width: 30rem;
+  padding: 0;
+}
+
+.lender .card.row {
+  margin-top: 0;
+}
+
+.lenders .card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  width: 7rem;
+}
+
+.lenders .card .status {
+  font-size: 0.75rem;
+  margin: 0;
+  width: 4rem;
+}
+
+.lenders .card .location {
+  font-size: 0.75rem;
+  margin: 0;
+  width: 7rem;
+}
+
+.lenders .card img {
+  height: 4rem;
+  width: 4rem;
+}
+/* ======================= */
+
+/* SIGNUP PAGE */
+.register {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.register .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.main-input {
+  margin: auto;
+  padding-top: 3rem;
+}
+
+.register .btn {
+  width: 10rem;
+}
+/* ======================= */
+
+/* LOGIN PAGE */
+.login {
+  background-color: rgba(105, 105, 105, 0.671);
+  position: relative;
+  height: 100%;
+  top: -55.4px;
+}
+
+.login .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+.login-inner {
+}
+/* ======================= */
+
+/* CREATE PROFILE PAGE */
+.create-profile .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+}
+
+.create-profile .container-fluid .row {
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.create-profile h1,
+.create-profile p {
+  margin: auto;
+}
+/* ======================= */
+
+/* DASHBOARD PAGE */
+.dashboard .container-fluid {
+  background: url('./images/tools2small.jpg') no-repeat;
+  background-size: cover;
+  height: 48.78rem;
+  color: rgb(255, 255, 255);
+}
+
+.dashboard .container-fluid h1 {
+  margin-bottom: 7rem;
+}
+/* ======================= */
+
+.main-wrapper {
+  height: 48.78rem;
+}
+
+/* ======================= */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.308);
+  z-index: 9;
+}
+/* ======================= */
+
+/* ======================= */
+footer {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.308);
+  z-index: 9;
+  color: rgba(209, 209, 209, 0.616);
+}
+/* ======================= */
+
+img {
+  width: 100%;
+}
+
+.carousel-item .active {
+  width: 100%;
+}
+
+#carouselExampleControls {
+  width: 100%;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.light-overlay {
+  background-color: rgba(255, 236, 129, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}

@@ -10,13 +10,13 @@ export const getToolsByUser = userID => dispatch => {
     .then(res =>
       dispatch({
         type: types.GET_TOOLS,
-        payload: res.data,
+        payload: res.data
       })
     )
     .catch(err =>
       dispatch({
         type: types.GET_PROFILE,
-        payload: {},
+        payload: {}
       })
     );
 };
@@ -29,37 +29,59 @@ export const getProfileByTool = tool => dispatch => {
     .then(res =>
       dispatch({
         type: types.GET_LENDERS,
-        payload: res.data,
+        payload: res.data
       })
     )
     .catch(err =>
       dispatch({
         type: types.GET_LENDERS,
-        payload: {},
+        payload: {}
       })
     );
 };
 
-// Saves tool info to mongo (name, description, price, value, condition), save images to aws s3
+// // Saves tool info to mongo (name, description, price, value, condition), save images to aws s3
+// export const saveTool = toolFD => dispatch => {
+//   axios
+//     .post('/api/tools', toolFD, {
+//       headers: {
+//         'Content-Type': 'multipart/form-data',
+//       },
+//     })
+//     .then(res => {
+//       // console.log(res.data);
+//       // console.log(toolImages);
+//       //
+//       dispatch({
+//         type: types.SAVE_TOOL,
+//         payload: res.data,
+//       });
+//     })
+//     .catch(err =>
+//       dispatch({
+//         type: types.SAVE_TOOL,
+//       })
+//     );
+// };
+
+// Saves tool to Cloudinary
 export const saveTool = toolFD => dispatch => {
   axios
     .post('/api/tools', toolFD, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+        'Content-Type': 'multipart/form-data'
+      }
     })
     .then(res => {
-      // console.log(res.data);
-      // console.log(toolImages);
-      //
       dispatch({
         type: types.SAVE_TOOL,
-        payload: res.data,
+        payload: res.data
       });
     })
     .catch(err =>
       dispatch({
         type: types.SAVE_TOOL,
+        payload: err
       })
     );
 };

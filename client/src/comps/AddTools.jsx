@@ -25,7 +25,7 @@ class AddTools extends Component {
       photos: [],
       photosPreview: [],
       photoCount: 0,
-      errors: {},
+      errors: {}
     };
   }
 
@@ -35,45 +35,28 @@ class AddTools extends Component {
 
   onChangeImage = e => {
     this.setState({
-      selectedFile: e.target.files[0],
+      selectedFile: e.target.files[0]
     });
   };
-
-  // addPhoto = () => {
-  //   if (this.state.photos.length >= 4) {
-  //   } else if (this.state.photos.length === 0) {
-  //     const photos = new FormData();
-  //     photos.append('img1', this.state.selectedFile, this.state.selectedFile.name);
-  //     this.setState({
-  //       photos: photos,
-  //     });
-  //   } else {
-  //     const imgNum = this.state.photos.length + 1;
-  //     const photos = this.state.photos.append(
-  //       `img${imgNum}`,
-  //       this.state.selectedFile,
-  //       this.state.selectedFile.name
-  //     );
-  //     this.setState({
-  //       photos: photos,
-  //     });
-  //   }
-  // };
 
   addTool = () => {
     const tool = {
       name: this.state.name,
-      description: this.state.description,
+      description: this.state.description
     };
 
     const toolFD = new FormData();
 
-    toolFD.append('name', this.state.name);
-    toolFD.append('description', this.state.description);
-    toolFD.append('condition', this.state.condition);
+    // toolFD.append('name', this.state.name);
+    // toolFD.append('description', this.state.description);
+    // toolFD.append('condition', this.state.condition);
 
     for (let i = 0; i < this.state.photos.length; i++) {
-      toolFD.append(`img${i + 1}`, this.state.photos[i], this.state.photos[i].name);
+      toolFD.append(
+        `img${i + 1}`,
+        this.state.photos[i],
+        this.state.photos[i].name
+      );
     }
 
     this.props.saveTool(toolFD);
@@ -100,7 +83,7 @@ class AddTools extends Component {
         this.setState({
           photosPreview: [...this.state.photosPreview, reader.result],
           photos,
-          photoCount,
+          photoCount
         });
       },
       false
@@ -109,14 +92,16 @@ class AddTools extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { toolCount, tools, photosPreview, photoCount } = this.state;
     let toolInputs, toolImages, dropUploader;
 
     if (toolCount > 0) {
       toolInputs = tools.map(tool => {
         return (
-          <div className="card" style={{ width: '18rem', display: 'inline-block' }}>
+          <div
+            className="card"
+            style={{ width: '18rem', display: 'inline-block' }}
+          >
             <img className="card-img-top" src="" alt="Card image cap" />
             <div className="card-body">
               <p className="card-text">{tool.name}</p>
@@ -133,7 +118,7 @@ class AddTools extends Component {
           <p>Uploaded images...</p>
           {photosPreview.map(imgSrc => {
             return (
-              <div className="toolImgUploadThumb">
+              <div className="tool-preview">
                 <img src={imgSrc} />
               </div>
             );
@@ -142,9 +127,10 @@ class AddTools extends Component {
       );
     }
 
-    if (photoCount < 6) {
+    if (photoCount <= 6) {
       const maxImageSize = 5000000;
-      const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
+      const acceptedFileTypes =
+        'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
       dropUploader = (
         <Dropzone
           onDrop={this.onDrop}
@@ -174,7 +160,9 @@ class AddTools extends Component {
           <div className="row text-center">
             <div className="col-md-6 m-auto">
               <h1 className="display-4 text-center">Add Tools</h1>
-              <p className="lead text-center">Tell us what tools you're lending</p>
+              <p className="lead text-center">
+                Tell us what tools you're lending
+              </p>
               <p>
                 <small className="d-block pb-3">* = required fields</small>
               </p>
@@ -206,10 +194,18 @@ class AddTools extends Component {
 
                 {dropUploader}
 
-                <button type="button" onClick={this.addTool} className="btn btn-light mt-4">
+                <button
+                  type="button"
+                  onClick={this.addTool}
+                  className="btn btn-light mt-4"
+                >
                   Add More Tools
                 </button>
-                <input type="submit" value="Submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>
@@ -220,12 +216,13 @@ class AddTools extends Component {
 }
 
 AddTools.propTypes = {
-  errors: PropTypes.object,
+  errors: PropTypes.object
 };
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ saveTool }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ saveTool }, dispatch);
 
 export default connect(
   mapStateToProps,

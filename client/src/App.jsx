@@ -67,7 +67,11 @@ class App extends React.Component {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
           <Switch>
-            <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+            <PrivateRoute
+              exact
+              path="/create-profile"
+              component={CreateProfile}
+            />
           </Switch>
           <Switch>
             <PrivateRoute exact path="/add-tools" component={AddTools} />
@@ -82,13 +86,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => state.stories;
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      fetchStories: actions.fetchStories,
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(
   mapStateToProps,

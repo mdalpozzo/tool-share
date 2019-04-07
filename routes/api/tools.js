@@ -3,21 +3,30 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const fs = require('fs');
 const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+
+const cloudinaryVars = require('../../config/keys.js').cloudinary;
 
 const router = express.Router();
 
-// Set Storage Engine
-const storage = multer.diskStorage({
-  destination: './public/uploads/',
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
+// // Set Storage Engine
+// const storage = multer.diskStorage({
+//   destination: './public/uploads/',
+//   filename: function(req, file, cb) {
+//     cb(null, Date.now() + file.originalname);
+//   }
+// });
 
-// Init upload
-const upload = multer({
-  storage: storage,
-}).any();
+// // Init upload
+// const upload = multer({
+//   storage: storage
+// }).any();
+
+cloudinary.config({
+  cloud_name: cloudinaryVars.name,
+  api_key: cloudinaryVars.key,
+  api_secret: cloudinaryVars.secret
+});
 
 // Load Validation
 
@@ -68,23 +77,32 @@ router.get('/:tool', (req, res) => {
 });
 
 // @route   POST api/tool
-// @desc
+// @desc    Save tool info/images
 // @access  Private
-router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  upload(req, res, err => {
-    if (err) {
-      // handle errors
-    } else {
-      console.log(req.body);
-      console.log(req.files);
-      res.send('test');
-    }
-  });
-  // const toolFields = {};
-  // toolFields.user = req.user.id;
-  // if (req.body.name) toolFields.name = req.body.name;
-  // if (req.body.description) toolFields.description = req.body.description;
-  // new Tool(toolFields).save().then(tool => res.json(tool));
-});
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const values = Object.values(req.files);
+    const promises = values.map(image =>
+      cloudinary.uploader.upload(image.path)
+    );
+    Promise.all(promises).then(results => res.json(results));
+    // upload(req, res, err => {
+    //   if (err) {
+    //     // handle errors
+    //   } else {
+    //     console.log(req.body);
+    //     console.log(req.files);
+    //     res.send('test');
+    //   }
+    // });
+    // const toolFields = {};
+    // toolFields.user = req.user.id;
+    // if (req.body.name) toolFields.name = req.body.name;
+    // if (req.body.description) toolFields.description = req.body.description;
+    // new Tool(toolFields).save().then(tool => res.json(tool));
+  }
+);
 
 module.exports = router;
